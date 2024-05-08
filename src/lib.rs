@@ -14,6 +14,7 @@ pub mod bot;
 pub mod macros;
 pub mod prelude;
 pub mod maybe;
+pub mod fs;
 
 // re-exports
 pub use vex_rt::motor;
