@@ -22,7 +22,7 @@ impl File {
     /// Creates a **new** file at the specified location with only write permissions, returns None on failure
     #[inline]
     pub fn create(path: &str) -> Option<Self> {
-        let file = unsafe { fopen(cstr!(path), cstr!("wb")) };
+        let file = unsafe { fopen(cstr!("/usd/".to_string() + path), cstr!("wb")) };
         if file.is_null() { return None };
         Some(File(file))
     }
@@ -30,7 +30,7 @@ impl File {
     /// Opens an **existing** file at the specified location with only read permissions, returns None of failure
     #[inline]
     pub fn open(path: &str) -> Option<Self> {
-        let file = unsafe { fopen(cstr!(path), cstr!("rb")) };
+        let file = unsafe { fopen(cstr!("/usd/".to_string() + path), cstr!("rb")) };
         if file.is_null() { return None };
         Some(File(file))
     }
