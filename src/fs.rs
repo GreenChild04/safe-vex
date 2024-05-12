@@ -1,6 +1,6 @@
 //! an **experimental** api to the micro-sd card of the vex v5 brain
 
-use alloc::{boxed::Box, vec};
+use alloc::{boxed::Box, vec, string::ToString};
 use libc::{c_void, fclose, fopen, fprintf, fread, fseek, ftell, fwrite, FILE, SEEK_END, SEEK_SET};
 
 /// Creates a `C` compatible string from a rust one
