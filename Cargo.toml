@@ -1,6 +1,6 @@
 [package]
 name = "safe-vex"
-version = "3.2.2-experimental"
+version = "3.2.3-experimental"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 description = "A modular, reliable and comprehensive wrapper around the vex-rt library that never crashes."

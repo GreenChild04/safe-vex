@@ -24,7 +24,7 @@ impl PortManager {
         
         ports.iter_mut()
             .enumerate()
-            .for_each(|(i, port)| *port = Some(unsafe { SmartPort::new(i as u8) }));
+            .for_each(|(i, port)| *port = Some(unsafe { SmartPort::new(i as u8 + 1) }));
         Self(ports)
     }
 
@@ -32,7 +32,7 @@ impl PortManager {
     #[inline]
     pub fn get(&self, port: u8) -> Result<&SmartPort, PortError> {
         self.0
-            .get(port as usize)
+            .get(port as usize -1)
             .ok_or(PortError::PortInvalid)?
             .as_ref()
             .ok_or(PortError::PortTaken)
@@ -42,7 +42,7 @@ impl PortManager {
     #[inline]
     pub fn get_mut(&mut self, port: u8) -> Result<&mut SmartPort, PortError> {
         self.0
-            .get_mut(port as usize)
+            .get_mut(port as usize -1)
             .ok_or(PortError::PortInvalid)?
             .as_mut()
             .ok_or(PortError::PortTaken)
@@ -52,7 +52,7 @@ impl PortManager {
     #[inline]
     pub fn take(&mut self, port: u8) -> Result<SmartPort, PortError> {
         self.0
-            .get_mut(port as usize)
+            .get_mut(port as usize -1)
             .ok_or(PortError::PortInvalid)?
             .take()
             .ok_or(PortError::PortTaken)
